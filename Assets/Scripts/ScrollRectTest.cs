@@ -79,6 +79,11 @@ public class ScrollRectTest : MonoBehaviour
         {
             for (int j = 0; j < _iItemShowNum; j++)
             {
+                if ((_iminNumber + i) > _iItemNum)
+                {
+                    break;
+                }
+
                 if ((_iminNumber + i) == _ary_item[j].iNumber)
                 {
                     break;
