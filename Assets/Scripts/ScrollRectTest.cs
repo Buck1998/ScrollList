@@ -22,6 +22,9 @@ public class ScrollRectTest : MonoBehaviour
     private int _imaxNumber;
     private Item[] _ary_item;
 
+    public ScrollRect _scrollRect2;
+    public Transform _transform2;
+
     void Start()
     {
         _scrollRect.onValueChanged.AddListener(delegate { ChangeList(); });
@@ -41,6 +44,19 @@ public class ScrollRectTest : MonoBehaviour
             item.go.SetActive(true);
 
             _ary_item[i] = item;
+        }
+
+        _scrollRect2.content.sizeDelta = new Vector2(_scrollRect2.content.sizeDelta.x, _iItemNum * _iItemHeight + _iItemHeight);
+        for (int i = 0; i < _iItemNum + 1; i++)
+        {
+            Item item = new Item();
+            item.go = GameObject.Instantiate(_goItem, _transform2);
+            item.rectTransform = item.go.GetComponent<RectTransform>();
+            item.rectTransform.anchoredPosition = new Vector2(item.rectTransform.anchoredPosition.x, -1 * _iItemHeight * i);
+            item.iNumber = i;
+            item.text = item.go.transform.GetChild(0).GetComponent<Text>();
+            item.text.text = i.ToString();
+            item.go.SetActive(true);
         }
     }
 
