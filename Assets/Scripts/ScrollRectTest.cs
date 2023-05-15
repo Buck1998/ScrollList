@@ -41,9 +41,13 @@ public class ScrollRectTest : MonoBehaviour
             item.iNumber = i;
             item.text = item.go.transform.GetChild(0).GetComponent<Text>();
             item.text.text = i.ToString();
-            item.go.SetActive(true);
 
             _ary_item[i] = item;
+
+            if (i < _iItemNum)
+            {
+                _ary_item[i].go.SetActive(true);
+            }
         }
 
         _scrollRect2.content.sizeDelta = new Vector2(_scrollRect2.content.sizeDelta.x, _iItemNum * _iItemHeight + _iItemHeight);
@@ -56,7 +60,11 @@ public class ScrollRectTest : MonoBehaviour
             item.iNumber = i;
             item.text = item.go.transform.GetChild(0).GetComponent<Text>();
             item.text.text = i.ToString();
-            item.go.SetActive(true);
+
+            if (i < _iItemNum)
+            {
+                item.go.SetActive(true);
+            }
         }
     }
 
@@ -96,15 +104,7 @@ public class ScrollRectTest : MonoBehaviour
 
                 for (int k = 0; k < _iItemShowNum; k++)
                 {
-                    if (_ary_item[k].iNumber > _imaxNumber)
-                    {
-                        _ary_item[k].iNumber = _iminNumber + i;
-                        _ary_item[k].text.text = _ary_item[k].iNumber.ToString();
-                        _ary_item[k].rectTransform.anchoredPosition = new Vector2(_ary_item[k].rectTransform.anchoredPosition.x, -1 * _iItemHeight * _ary_item[k].iNumber);
-                        break;
-                    }
-
-                    if (_ary_item[k].iNumber < _iminNumber)
+                    if (_ary_item[k].iNumber > _imaxNumber || _ary_item[k].iNumber < _iminNumber)
                     {
                         _ary_item[k].iNumber = _iminNumber + i;
                         _ary_item[k].text.text = _ary_item[k].iNumber.ToString();
