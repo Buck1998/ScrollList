@@ -8,4 +8,4 @@ We use the built-in Profiler tool in Unity to observe CPU usage.
 Above is a comparison of the difference between Tris and Verts.
 
 ![ScrollRect2](https://user-images.githubusercontent.com/50480696/236135376-93e753da-cc90-4385-96cf-0670d24dacdc.gif)
-After turning off the masks for both, it can be observed that one scroll list uses 10,000 objects while the other scroll list only uses 6 objects.
+After turning off the masks for both, it can be observed that one scroll list uses 1,000 objects while the other scroll list only uses 6 objects.
